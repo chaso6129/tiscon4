@@ -9,8 +9,8 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-
 <nav th:insert="header.html :: header"></nav>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
 
 <div class="full height image">
     <div class="ui main container">
@@ -124,7 +124,7 @@
                                 <td>
                                     <p>例：123-4567</p>
                                     <div class="field" th:classappend="${errors.hasError('zipCode')} ? 'error'">
-                                        <input type="text" class="zipcode" name="zipCode" th:value="${form.zipCode}"/>
+                                        <input type="text"  class="zipcode" name="zipCode p-postal-code"maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" th:value="${form.zipCode}"/>
                                         <p th:if="${errors.hasError('zipCode')}"
                                            th:text="${errors.getMessage('zipCode')}" class="error-message">
                                         </p>
@@ -139,7 +139,7 @@
                                 <td>
                                     <p>例：東京都新宿区西新宿８－１７－１</p>
                                     <div class="field" th:classappend="${errors.hasError('address')} ? 'error'">
-                                        <input type="text" name="address" th:value="${form.address}"/>
+                                        <input type="text"class="p-region p-locality p-street-address p-extended-address" name="address" th:value="${form.address}"/>
                                         <p th:if="${errors.hasError('address')}"
                                            th:text="${errors.getMessage('address')}" class="error-message">
                                         </p>
@@ -305,7 +305,9 @@
                                 <button class="ui teal button angle right icon">次へ（お勤め先情報の入力）</button>
                             </div>
                         </div>
-                    </form>
+                    </form><script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
+                    <script src="//jpostal-1006.appspot.com/jquery.jpostal.js" type="text/javascript"></script>
+
                 </div>
             </div>
         </div>
