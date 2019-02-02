@@ -10,6 +10,7 @@
 </head>
 <body>
 <nav th:insert="header.html :: header"></nav>
+<!-- 郵便番号から住所を自動入力するためのスクリプト-->
 <script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
 
 <div class="full height image">
@@ -296,6 +297,8 @@
 
                         <div class="ui column grid">
                             <div class="eight wide column left aligned">
+                                <!-- 戻らないように，ダミーのボタンを追加 -->
+                                <button style="display:none;" />
                                 <!--/*戻る場合、formの送り先を強制的に書き換える*/-->
                                 <button class="ui button angle left icon"
                                         onclick="form.action='/action/order/backToAccept';return true">戻る
