@@ -125,7 +125,7 @@
                                 <td>
                                     <p>例：123-4567</p>
                                     <div class="field" th:classappend="${errors.hasError('zipCode')} ? 'error'">
-                                        <input type="text"  class="zipcode" name="zipCode p-postal-code"maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" th:value="${form.zipCode}"/>
+                                        <input type="text"  class="zipcode" name="zipCode"maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" th:value="${form.zipCode}"/>
                                         <p th:if="${errors.hasError('zipCode')}"
                                            th:text="${errors.getMessage('zipCode')}" class="error-message">
                                         </p>
