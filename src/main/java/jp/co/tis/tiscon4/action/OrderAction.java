@@ -92,14 +92,19 @@ public class OrderAction {
             throw new ApplicationException(message);
         }
 
-        UniversalDao.findAllBySqlFile(ZipcodeDto.class, "ZIPCODE_LIST");
+        // UniversalDao.findAllBySqlFile(ZipcodeDto.class, "ZIPCODE_LIST");
 
         BeanUtil.copy(form, insOrder);
 
         ctx.setRequestScopedVar("form", new JobForm());
         ctx.setRequestScopedVar("industryTypes", IndustryType.values());
 
-        return new HttpResponse("job.html");
+        if(insOrder.getJob().equals("経営・自営業") || insOrder.getJob().equals("会社員") || insOrder.getJob().equals("契約・派遣社員") || insOrder.getJob().equals("公務員") || insOrder.getJob().equals("民間団体") || insOrder.getJob().equals("その他（有職）")){
+            return new HttpResponse("job.html");
+        }else{
+            UniversalDao.insert(insOrder);
+            return new HttpResponse("completed.html");
+        }
     }
 
     /**

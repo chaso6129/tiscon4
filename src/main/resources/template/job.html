@@ -130,6 +130,19 @@
                         </div>
                         <input type="hidden" name="nablarch_token" th:value="${nablarch_request_token}"/>
                     </form>
+                    <!-- エンターキーを無効に -->
+                    <script>
+                        $(function(){
+                            $("input").keydown(function(e) {
+                                if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                        });
+                    </script>
+                    <!--ここまで -->
                 </div>
             </div>
         </div>
