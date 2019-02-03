@@ -10,9 +10,8 @@
 </head>
 <body>
 <nav th:insert="header.html :: header"></nav>
-<script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
 <!-- 郵便番号から住所を自動入力するためのスクリプト-->
-
+<script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
 
 <div class="full height image">
     <div class="ui main container">
@@ -47,7 +46,7 @@
                                 <td>
                                     <p>例：ＴＩＳ　太郎</p>
                                     <div class="field" th:classappend="${errors.hasError('kanjiName')} ? 'error'">
-                                        <input type="text" id="user_name" name="kanjiName" th:value="${form.kanjiName}"/>
+                                        <input type="text" name="kanjiName" th:value="${form.kanjiName}"/>
                                         <p th:if="${errors.hasError('kanjiName')}"
                                            th:text="${errors.getMessage('kanjiName')}" class="error-message">
                                         </p>
@@ -62,7 +61,7 @@
                                 <td>
                                     <p>例：ティーアイエス　タロウ</p>
                                     <div class="field" th:classappend="${errors.hasError('kanaName')} ? 'error'">
-                                        <input type="text"id="user_name_kana" name="kanaName" th:value="${form.kanaName}"/>
+                                        <input type="text" name="kanaName" th:value="${form.kanaName}"/>
                                         <p th:if="${errors.hasError('kanaName')}"
                                            th:text="${errors.getMessage('kanaName')}" class="error-message">
                                         </p>
@@ -126,7 +125,7 @@
                                 <td>
                                     <p>例：123-4567</p>
                                     <div class="field" th:classappend="${errors.hasError('zipCode')} ? 'error'">
-                                        <input type="text"  class="zipcode" name="zipCode"maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" th:value="${form.zipCode}"/>
+                                        <input type="text"  class="zipcode" name="zipCode p-postal-code"maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" th:value="${form.zipCode}"/>
                                         <p th:if="${errors.hasError('zipCode')}"
                                            th:text="${errors.getMessage('zipCode')}" class="error-message">
                                         </p>
@@ -298,8 +297,6 @@
 
                         <div class="ui column grid">
                             <div class="eight wide column left aligned">
-                                <!-- 戻らないように，ダミーのボタンを追加 -->
-                                <button style="display:none;" />
                                 <!--/*戻る場合、formの送り先を強制的に書き換える*/-->
                                 <button class="ui button angle left icon"
                                         onclick="form.action='/action/order/backToAccept';return true">戻る
@@ -311,18 +308,19 @@
                         </div>
                     </form><script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
                     <script src="//jpostal-1006.appspot.com/jquery.jpostal.js" type="text/javascript"></script>
-                    <script src="/js/jquery.autoKana.js"language="javascript" type="text/javascript"></script>
-                    <script type="text/javascript">
+                    <!-- エンターキーを無効に -->
+                    <script>
                         $(function(){
-                            $(document).ready(
-                                function() {
-                                    $.fn.autoKana('#user_name', '#user_name_kana', {
-                                        katakana : true  //true：カタカナ、false：ひらがな（デフォルト）
-                                });
+                            $("input").keydown(function(e) {
+                                if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
                             });
                         });
                     </script>
-
+                    <!--ここまで -->
                 </div>
             </div>
         </div>
