@@ -155,7 +155,7 @@
                                 <td>
                                     <p>例：00-1111-2222</p>
                                     <div class="field" th:classappend="${errors.hasError('homePhoneNumber')} ? 'error'">
-                                        <input type="text" name="homePhoneNumber" th:value="${form.homePhoneNumber}"/>
+                                        <input type="tel" name="homePhoneNumber" th:value="${form.homePhoneNumber}"/>
                                         <p th:if="${errors.hasError('homePhoneNumber')}"
                                            th:text="${errors.getMessage('homePhoneNumber')}" class="error-message">
                                         </p>
@@ -171,7 +171,7 @@
                                     <p>例：080-0000-0000</p>
                                     <div class="field"
                                          th:classappend="${errors.hasError('mobilePhoneNumber')} ? 'error'">
-                                        <input type="text" name="mobilePhoneNumber"
+                                        <input type="tel" name="mobilePhoneNumber"
                                                th:value="${form.mobilePhoneNumber}"/>
                                         <p th:if="${errors.hasError('mobilePhoneNumber')}"
                                            th:text="${errors.getMessage('mobilePhoneNumber')}" class="error-message">
@@ -218,7 +218,7 @@
                                 </td>
                                 <td>
                                     <div class="field" th:classappend="${errors.hasError('income')} ? 'error'">
-                                        <input type="text" class="number" name="income" th:value="${form.income}"/><span
+                                        <input type="number" class="number" name="income" th:value="${form.income}"/><span
                                             class="unit">万円</span>
                                         <p th:if="${errors.hasError('income')}" th:text="${errors.getMessage('income')}"
                                            class="error-message">
@@ -303,7 +303,7 @@
                                 </button>
                             </div>
                             <div class="eight wide column right aligned">
-                                <button class="ui teal button angle right icon">次へ（お勤め先情報の入力）</button>
+                                <button class="ui teal button angle right icon">次へ</button>
                             </div>
                         </div>
                     </form><script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
