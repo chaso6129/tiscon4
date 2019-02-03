@@ -297,8 +297,6 @@
 
                         <div class="ui column grid">
                             <div class="eight wide column left aligned">
-                                <!-- 戻らないように，ダミーのボタンを追加 -->
-                                <button style="display:none;" />
                                 <!--/*戻る場合、formの送り先を強制的に書き換える*/-->
                                 <button class="ui button angle left icon"
                                         onclick="form.action='/action/order/backToAccept';return true">戻る
@@ -310,7 +308,19 @@
                         </div>
                     </form><script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
                     <script src="//jpostal-1006.appspot.com/jquery.jpostal.js" type="text/javascript"></script>
-
+                    <!-- エンターキーを無効に -->
+                    <script>
+                        $(function(){
+                            $("input").keydown(function(e) {
+                                if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                        });
+                    </script>
+                    <!--ここまで -->
                 </div>
             </div>
         </div>
